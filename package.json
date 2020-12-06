@@ -130,6 +130,7 @@
     "eslint-config-egg": "^9.0.0",
     "husky": "^4.3.4",
     "nodeunit": "0.9.x",
+    "open": "^7.3.0",
     "requirejs": "2.x",
     "rimraf": "^2.4.3"
   },
