@@ -143,7 +143,7 @@ table.coverage td span.cline-any {
     width: 7px;
     display: inline-block;
     margin-left: 0.5em;
-    background: url(sort-arrow-sprite.png) no-repeat scroll 0 0 transparent;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAbCAYAAACwRpUzAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHNJREFUeNq8UkEOwCAIA77E/5/gmxhEu7AF3GVbEw3SCtRIZkZYDo0NZ6EFZtYVqsczF4pEZAxGqXexLcuYsBuICsEgGG4E02cH2U0rT1bauuI9uSIiLwjuxKUnEln4kZU/SP9oVpIgskCqG6dw9/CHAAMAWfg4QndjLIgAAAAASUVORK5CYII=) no-repeat scroll 0 0 transparent;
 }
 .coverage-summary .sorted .sorter {
     background-position: 0 -20px;

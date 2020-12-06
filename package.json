@@ -91,8 +91,8 @@
     "@graingert"
   ],
   "scripts": {
-    "pretest": "jshint index.js lib/ test/ && ./download-escodegen-browser.sh",
-    "test": "node --harmony test/run.js",
+    "pretest": "./download-escodegen-browser.sh",
+    "test": "node test/run.js",
     "posttest": "node ./lib/cli.js check-coverage --statements 95 --branches 80",
     "docs": "npm install yuidocjs && node node_modules/yuidocjs/lib/cli.js .",
     "lint": "eslint . --fix"
@@ -129,7 +129,6 @@
     "eslint": "^7.15.0",
     "eslint-config-egg": "^9.0.0",
     "husky": "^4.3.4",
-    "jshint": "^2.8.0",
     "nodeunit": "0.9.x",
     "requirejs": "2.x",
     "rimraf": "^2.4.3"
