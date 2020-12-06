@@ -1,0 +1,1 @@
+./lib/cli.js instrument ./demo/sample.js > ./demo/res.js
