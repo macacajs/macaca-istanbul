@@ -94,7 +94,6 @@
     "pretest": "./download-escodegen-browser.sh",
     "test": "node test/run.js",
     "posttest": "node ./lib/cli.js check-coverage --statements 95 --branches 80",
-    "docs": "npm install yuidocjs && node node_modules/yuidocjs/lib/cli.js .",
     "lint": "eslint . --fix"
   },
   "bin": {
@@ -125,7 +124,6 @@
     "wordwrap": "^1.0.0"
   },
   "devDependencies": {
-    "coveralls": "2.x",
     "eslint": "^7.15.0",
     "eslint-config-egg": "^9.0.0",
     "husky": "^4.3.4",
