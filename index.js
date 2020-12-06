@@ -9,7 +9,7 @@ const Store = require('./lib/store');
 const Report = require('./lib/report');
 const meta = require('./lib/util/meta');
 
-//register our standard plugins
+// register our standard plugins
 require('./lib/register-plugins');
 
 /**
@@ -42,7 +42,7 @@ module.exports = {
    * @type Store
    * @static
    */
-  Store: Store,
+  Store,
   /**
    * the Collector class
    * @property  Collector
@@ -63,7 +63,7 @@ module.exports = {
    * @type Report
    * @static
    */
-  Report: Report,
+  Report,
   /**
    * the config module
    * @property config
@@ -142,12 +142,11 @@ module.exports = {
    * @static
    */
   FileWriter: require('./lib/util/file-writer'),
-  //undocumented
+  // undocumented
   _yuiLoadHook: require('./lib/util/yui-load-hook'),
-  //undocumented
+  // undocumented
   TreeSummarizer: require('./lib/util/tree-summarizer'),
-  //undocumented
-  assetsDir: path.resolve(__dirname, 'lib', 'assets')
+  // undocumented
+  assetsDir: path.resolve(__dirname, 'lib', 'assets'),
 };
-
 
