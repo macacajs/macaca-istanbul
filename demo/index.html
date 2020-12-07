@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../lib/assets/vendor/prettify.css" />
+  <script src="../lib/assets/vendor/prettify.js"></script>
+</head>
+<body>
+  <pre class="prettyprint lang-js" id="code">
+  </pre>
+  <hr />
+  <button id="test">test</button>
+  <script>
+    const codesElem = document.querySelector('#code');
+    const codes = [];
+    window._runtime = (str) => {
+      codes.push(str);
+      codesElem.innerHTML = codes.join('\n------------\n');
+      if (typeof prettyPrint === 'function') {
+        prettyPrint();
+      }
+    };
+  </script>
+  <script src="./res.js"></script>
+</body>
+</html>

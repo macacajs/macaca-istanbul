@@ -91,10 +91,10 @@
     "@graingert"
   ],
   "scripts": {
-    "pretest": "jshint index.js lib/ test/ && ./download-escodegen-browser.sh",
-    "test": "node --harmony test/run.js",
+    "pretest": "./download-escodegen-browser.sh",
+    "test": "node test/run.js",
     "posttest": "node ./lib/cli.js check-coverage --statements 95 --branches 80",
-    "docs": "npm install yuidocjs && node node_modules/yuidocjs/lib/cli.js ."
+    "lint": "eslint . --fix"
   },
   "bin": {
     "istanbul": "./lib/cli.js"
@@ -105,7 +105,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/gotwarlost/istanbul.git"
+    "url": "git://github.com/macacajs/macaca-istanbul.git"
   },
   "dependencies": {
     "abbrev": "1.0.x",
@@ -124,10 +124,17 @@
     "wordwrap": "^1.0.0"
   },
   "devDependencies": {
-    "coveralls": "2.x",
-    "jshint": "^2.8.0",
+    "eslint": "^7.15.0",
+    "eslint-config-egg": "^9.0.0",
+    "husky": "^4.3.4",
     "nodeunit": "0.9.x",
+    "open": "^7.3.0",
     "requirejs": "2.x",
     "rimraf": "^2.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

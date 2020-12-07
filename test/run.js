@@ -26,83 +26,80 @@
  *          based on the coverage environment variable. This test is less
  *          sensitive to modes of operation.
  */
+'use strict';
 
-/*jslint nomen: true */
-var nodeunit = require('nodeunit'),
-    fs = require('fs'),
-    path = require('path'),
-    loader = require('./loader'),
-    child_process = require('child_process'),
-    rimraf = require('rimraf'),
-    common = require('./common'),
-    cliHelper = require('./cli-helper');
+const nodeunit = require('nodeunit');
+const fs = require('fs');
+const path = require('path');
+const child_process = require('child_process');
+const rimraf = require('rimraf');
+const loader = require('./loader');
+const common = require('./common');
+const cliHelper = require('./cli-helper');
 
 function runTests(pat, forceCover) {
-    var defaultReporter = nodeunit.reporters['default'],
-        selfCover = forceCover || !pat,
-        args,
-        proc;
+  var defaultReporter = nodeunit.reporters['default'],
+    selfCover = forceCover || !pat,
+    args,
+    proc;
 
-    cliHelper.setVerbose(process.env.VERBOSE);
-    loader.runTests(pat, defaultReporter, undefined, function (err) {
-        var coverageDir = common.getCoverageDir();
-        //if any test failed then we cannot obviously run self-coverage
-        if (err) { throw err; }
-        if (selfCover) {
-            //delet the build dir
-            rimraf.sync(common.getBuildDir());
-            //set up environment variable to set CLI and browser
-            //tests know that they need to run in self-cover mode
-            common.setSelfCover(true);
-            console.log('Running self-coverage....');
-            // run the equivalent of
-            // $ istanbul cover run-again.js -- <pat>
-            args = [
-                '--harmony',
-                path.resolve(__dirname, '..', 'lib', 'cli.js'),
-                'cover',
-                '--self-test',
-                '--dir',
-                coverageDir,
-                '--report',
-                'none',
-                '--x',
-                '**/node_modules/**',
-                '--x',
-                '**/test/**',
-                '--x',
-                '**/yui-load-hook.js',
-                path.resolve(__dirname, 'run-again.js'),
-                '--',
-                pat || ''
-            ];
-            console.log('Run node ' + args.join(' '));
-            proc = child_process.spawn('node', args);
-            proc.stdout.on('data', function (data) { process.stdout.write(data); });
-            proc.stderr.on('data', function (data) { process.stderr.write(data); });
-            proc.on('exit', function (exitCode) {
-                if (exitCode !== 0) {
-                    throw new Error('self-cover returned exit code [' + exitCode + ']');
-                }
-                var Collector = require('../lib/collector'),
-                    collector = new Collector(),
-                    Report = require('../lib/report'),
-                    reporter = Report.create('lcov', { dir: coverageDir }),
-                    summary = Report.create('text-summary'),
-                    detail = Report.create('text');
-                fs.readdirSync(coverageDir).forEach(function (file) {
-                    if (file.indexOf('cov') === 0 && file.indexOf('.json') > 0) {
-                        collector.add(JSON.parse(fs.readFileSync(path.resolve(coverageDir, file), 'utf8')));
-                    }
-                });
-                reporter.writeReport(collector, true);
-                detail.writeReport(collector, true);
-                summary.writeReport(collector, true);
-            });
+  cliHelper.setVerbose(process.env.VERBOSE);
+  loader.runTests(pat, defaultReporter, undefined, function (err) {
+    var coverageDir = common.getCoverageDir();
+    //if any test failed then we cannot obviously run self-coverage
+    if (err) { throw err; }
+    if (selfCover) {
+      //delet the build dir
+      rimraf.sync(common.getBuildDir());
+      //set up environment variable to set CLI and browser
+      //tests know that they need to run in self-cover mode
+      common.setSelfCover(true);
+      console.log('Running self-coverage....');
+      // run the equivalent of
+      // $ istanbul cover run-again.js -- <pat>
+      args = [
+        path.resolve(__dirname, '..', 'lib', 'cli.js'),
+        'cover',
+        '--self-test',
+        '--dir',
+        coverageDir,
+        '--report',
+        'none',
+        '--x',
+        '**/node_modules/**',
+        '--x',
+        '**/test/**',
+        '--x',
+        '**/yui-load-hook.js',
+        path.resolve(__dirname, 'run-again.js'),
+        '--',
+        pat || ''
+      ];
+      console.log('Run node ' + args.join(' '));
+      proc = child_process.spawn('node', args);
+      proc.stdout.on('data', function (data) { process.stdout.write(data); });
+      proc.stderr.on('data', function (data) { process.stderr.write(data); });
+      proc.on('exit', function (exitCode) {
+        if (exitCode !== 0) {
+          throw new Error('self-cover returned exit code [' + exitCode + ']');
         }
-    });
+        var Collector = require('../lib/collector'),
+          collector = new Collector(),
+          Report = require('../lib/report'),
+          reporter = Report.create('lcov', { dir: coverageDir }),
+          summary = Report.create('text-summary'),
+          detail = Report.create('text');
+        fs.readdirSync(coverageDir).forEach(function (file) {
+          if (file.indexOf('cov') === 0 && file.indexOf('.json') > 0) {
+            collector.add(JSON.parse(fs.readFileSync(path.resolve(coverageDir, file), 'utf8')));
+          }
+        });
+        reporter.writeReport(collector, true);
+        detail.writeReport(collector, true);
+        summary.writeReport(collector, true);
+      });
+    }
+  });
 }
 
 runTests(process.argv[2], process.argv[3]);
-
-

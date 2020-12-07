@@ -24,3 +24,5 @@ test/other/output/
 test/cli/output/
 
 npm-debug.log
+temp
+coverage
