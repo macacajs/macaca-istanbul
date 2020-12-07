@@ -10,6 +10,12 @@
       .enable-incremental .disabled {
         opacity: 0.2;
       }
+      .enable-incremental .summary-line.origin{
+        display: none;
+      }
+      .enable-origin .summary-line.incremental{
+        display: none;
+      }
     </style>
     <script>
     !function(t,e,a,r,c){t.TracertCmdCache=t.TracertCmdCache||[],t[c]=window[c]||
@@ -21,7 +27,7 @@
       Tracert.start({ plugins: [ 'BucName' ], spmAPos: 'a254', spmBPos: 'b19448' });
     </script>
 </head>
-<body>
+<body class="enable-origin">
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
@@ -40,7 +46,7 @@
         } else {
           document.querySelector('.incremental').style.display = 'none';
           document.querySelector('.origin').style.display = 'block';
-          document.body.className = '';
+          document.body.className = 'enable-origin';
         }
       }, false);
     </script>
@@ -81,37 +87,37 @@
       {{/if_has_ignores}}
     </div>
     <div class='clearfix incremental' style="display: none;">
-      {{#with metrics.lines}}
+      {{#with incrementMetrics.lines}}
       <div class='fl pad1y space-right2'>
-        <span class="strong">10% </span>
+        <span class="strong">{{pct}}% </span>
         <span class="quiet">Lines</span>
         <span class='fraction'>{{covered}}/{{total}}</span>
       </div>
       {{/with}}
-      {{#with metrics.functions}}
+      {{#with incrementMetrics.functions}}
       <div class='fl pad1y space-right2'>
         <span class="strong">{{pct}}% </span>
         <span class="quiet">Functions</span>
         <span class='fraction'>{{covered}}/{{total}}</span>
       </div>
       {{/with}}
-      {{#with metrics.statements}}
+      {{#with incrementMetrics.statements}}
       <div class='fl pad1y space-right2'>
-        <span class="strong">10% </span>
+        <span class="strong">{{pct}}% </span>
         <span class="quiet">Statements</span>
         <span class='fraction'>{{covered}}/{{total}}</span>
       </div>
       {{/with}}
-      {{#with metrics.branches}}
+      {{#with incrementMetrics.branches}}
       <div class='fl pad1y space-right2'>
         <span class="strong">{{pct}}% </span>
         <span class="quiet">Branches</span>
         <span class='fraction'>{{covered}}/{{total}}</span>
       </div>
       {{/with}}
-      {{#if_has_ignores metrics}}
+      {{#if_has_ignores incrementMetrics}}
       <div class='fl pad1y'>
-        <span class="strong">{{#show_ignores metrics}}{{/show_ignores}}</span>
+        <span class="strong">{{#show_ignores incrementMetrics}}{{/show_ignores}}</span>
         <span class="quiet">Ignored</span>  &nbsp;&nbsp;&nbsp;&nbsp;
       </div>
       {{/if_has_ignores}}
