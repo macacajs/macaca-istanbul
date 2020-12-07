@@ -1,6 +1,5 @@
 'use strict';
 
-const fs = require('fs');
 const open = require('open');
 const path = require('path');
 const __coverage__ = require('./data.json');
