@@ -16,7 +16,13 @@ reporter.addAll([
   'lcov',
   'json',
 ]);
-reporter.write(collector, true, () => {
+reporter.write(collector, {
+  incrementalMap: {
+    '/Users/xunan/github/web-app-bootstrap/antd-sample/app.jsx': [
+      [ 61, 74 ],
+    ],
+  },
+}, () => {
   const coverageHtml = path.join(p, 'index.html');
   console.log(coverageHtml);
   open(coverageHtml);
