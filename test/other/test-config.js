@@ -89,7 +89,6 @@ module.exports = {
                     }
                 });
                 test.equal('foo.info', config.reporting.reportConfig().lcovonly.file);
-                test.equal('clover.xml', config.reporting.reportConfig().clover.file);
                 test.equal(null, config.reporting.reportConfig().text.file);
                 test.done();
             }

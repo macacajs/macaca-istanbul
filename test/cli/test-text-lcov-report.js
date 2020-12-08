@@ -35,7 +35,7 @@ module.exports = {
             collector = new Collector();
 
         collector.add(JSON.parse(fs.readFileSync(file, 'utf8')));
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(output.match('TN:SF:'), 'failed to output report');
         test.done();
     }

@@ -91,9 +91,8 @@
     "@graingert"
   ],
   "scripts": {
-    "pretest": "./download-escodegen-browser.sh",
     "test": "node test/run.js",
-    "posttest": "node ./lib/cli.js check-coverage --statements 95 --branches 80",
+    "posttest": "node ./lib/cli.js check-coverage --statements 50 --branches 50",
     "lint": "eslint . --fix"
   },
   "bin": {
