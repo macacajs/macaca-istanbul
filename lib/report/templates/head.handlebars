@@ -37,19 +37,6 @@
       <input id="incremental-btn" type="checkbox" />
       <label for="incremental-btn">show incremental</label>
     </div>
-    <script>
-      document.querySelector('#incremental-btn').addEventListener('click', e => {
-        if (e.target.checked) {
-          document.querySelector('.incremental').style.display = 'block';
-          document.querySelector('.origin').style.display = 'none';
-          document.body.className = 'enable-incremental';
-        } else {
-          document.querySelector('.incremental').style.display = 'none';
-          document.querySelector('.origin').style.display = 'block';
-          document.body.className = 'enable-origin';
-        }
-      }, false);
-    </script>
     <div class='clearfix origin'>
       {{#with metrics.lines}}
       <div class='fl pad1y space-right2'>
@@ -124,3 +111,31 @@
     </div>
   </div>
   <div class='status-line {{reportClass}}'></div>
+  <script>
+    function showIncremental() {
+      document.querySelector('.incremental').style.display = 'block';
+      document.querySelector('.origin').style.display = 'none';
+      document.body.className = 'enable-incremental';
+    }
+
+    function showOrigin() {
+      document.querySelector('.incremental').style.display = 'none';
+      document.querySelector('.origin').style.display = 'block';
+      document.body.className = 'enable-origin';
+    }
+
+    document.querySelector('#incremental-btn').addEventListener('click', e => {
+      if (e.target.checked) {
+        showIncremental();
+        localStorage && localStorage.setItem('enable-incremental', true);
+      } else {
+        showOrigin();
+        localStorage && localStorage.setItem('enable-incremental', '')
+      }
+    }, false);
+
+    if(localStorage && localStorage.getItem('enable-incremental')){
+      showIncremental();
+      document.querySelector('#incremental-btn').setAttribute('checked', 'checked');
+    };
+  </script>
