@@ -39,7 +39,7 @@ module.exports = {
 
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(htmlReport));
         test.ok(existsSync(fileFor('index.html')));
         test.ok(existsSync(fileFor('lib', 'index.html')));
@@ -65,7 +65,7 @@ module.exports = {
 
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(htmlReport));
         test.ok(existsSync(fileFor('index.html')));
         test.ok(existsSync(fileFor('lib', 'bar.js.html')));
@@ -93,7 +93,7 @@ module.exports = {
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
         try {
-            reporter.writeReport(collector, true);
+            reporter.writeReport(collector, { sync: true });
         } catch(err) {
             test.ok(false);
         } finally {
@@ -126,7 +126,7 @@ module.exports = {
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
         try {
-            reporter.writeReport(collector, true);
+            reporter.writeReport(collector, { sync: true });
         } catch(err) {
             test.ok(false);
         } finally {
@@ -159,7 +159,7 @@ module.exports = {
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
         try {
-            reporter.writeReport(collector, true);
+            reporter.writeReport(collector, { sync: true });
         } catch(err) {
             test.ok(false);
         } finally {
@@ -203,7 +203,7 @@ module.exports = {
             test.ok(copy[mangled].code);
         });
         collector.add(copy);
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(htmlReport));
         test.ok(existsSync(fileFor('index.html')));
         test.ok(existsSync(fileFor('lib', 'index.html')));

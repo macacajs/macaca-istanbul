@@ -73,21 +73,4 @@ module.exports = {
             test.done();
         });
     },
-    "should run all possible reports when requested": function (test) {
-        test.ok(existsSync(path.resolve(OUTPUT_DIR, 'coverage.json')));
-        run([ '-v' ].concat(Report.getReportList()), function (results) {
-            test.ok(results.succeeded());
-            test.ok(existsSync(path.resolve(OUTPUT_DIR, 'lcov.info')));
-            test.ok(existsSync(path.resolve(OUTPUT_DIR, 'cobertura-coverage.xml')));
-            test.done();
-        });
-    },
-    "should default to configuration value": function (test) {
-        test.ok(existsSync(path.resolve(OUTPUT_DIR, 'coverage.json')));
-        run([ '--config', 'config.istanbul.yml' ], function (results) {
-            test.ok(results.succeeded());
-            test.ok(existsSync(path.resolve(OUTPUT_DIR, 'foo.xml')));
-            test.done();
-        });
-    }
 };

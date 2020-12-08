@@ -69,8 +69,6 @@ function runTests(pat, forceCover) {
         '**/node_modules/**',
         '--x',
         '**/test/**',
-        '--x',
-        '**/yui-load-hook.js',
         path.resolve(__dirname, 'run-again.js'),
         '--',
         pat || ''
@@ -94,7 +92,7 @@ function runTests(pat, forceCover) {
             collector.add(JSON.parse(fs.readFileSync(path.resolve(coverageDir, file), 'utf8')));
           }
         });
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         detail.writeReport(collector, true);
         summary.writeReport(collector, true);
       });

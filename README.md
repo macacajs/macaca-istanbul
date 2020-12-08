@@ -1,11 +1,22 @@
 ## Istanbul - a JS code coverage tool written in JS
 
-[![Build Status](https://secure.travis-ci.org/gotwarlost/istanbul.svg?branch=master)](http://travis-ci.org/gotwarlost/istanbul)
-[![Dependency Status](https://gemnasium.com/gotwarlost/istanbul.svg)](https://gemnasium.com/gotwarlost/istanbul)
-[![Coverage Status](https://img.shields.io/coveralls/gotwarlost/istanbul.svg)](https://coveralls.io/r/gotwarlost/istanbul?branch=master)
-[![bitHound Score](https://www.bithound.io/github/gotwarlost/istanbul/badges/score.svg)](https://www.bithound.io/github/gotwarlost/istanbul)
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![npm download][download-image]][download-url]
 
-[![NPM](https://nodei.co/npm/istanbul.png?downloads=true)](https://nodei.co/npm/istanbul/)
+[logo-image]: ./logo.png
+[logo-url]: https://npmjs.org/package/macaca-istanbul
+[npm-image]: https://img.shields.io/npm/v/macaca-istanbul.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/macaca-istanbul
+[travis-image]: https://img.shields.io/travis/macacajs/macaca-istanbul.svg?style=flat-square
+[travis-url]: https://travis-ci.org/macacajs/macaca-istanbul
+[codecov-image]: https://img.shields.io/coveralls/macacajs/macaca-istanbul.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/macacajs/macaca-istanbul
+[download-image]: https://img.shields.io/npm/dm/macaca-istanbul.svg?style=flat-square
+[download-url]: https://npmjs.org/package/macaca-istanbul
+
+---
 
 > *Deprecation Notice:* this version of _istanbul_ is deprecated, we will not be
   landing pull requests or releasing new versions. But don't worry, the [Istanbul 2.0
