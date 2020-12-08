@@ -7,13 +7,13 @@
 
 [logo-image]: ./logo.png
 [logo-url]: https://npmjs.org/package/macaca-istanbul
-[npm-image]: https://img.shields.io/npm/v/macaca-istanbul.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/macaca-istanbul.svg
 [npm-url]: https://npmjs.org/package/macaca-istanbul
-[travis-image]: https://img.shields.io/travis/macacajs/macaca-istanbul.svg?style=flat-square
-[travis-url]: https://travis-ci.org/macacajs/macaca-istanbul
-[codecov-image]: https://img.shields.io/coveralls/macacajs/macaca-istanbul.svg?style=flat-square
+[travis-image]: https://travis-ci.com/macacajs/macaca-istanbul.svg?branch=master
+[travis-url]: https://travis-ci.com/macacajs/macaca-istanbul
+[codecov-image]: https://img.shields.io/coveralls/macacajs/macaca-istanbul.svg
 [codecov-url]: https://codecov.io/gh/macacajs/macaca-istanbul
-[download-image]: https://img.shields.io/npm/dm/macaca-istanbul.svg?style=flat-square
+[download-image]: https://img.shields.io/npm/dm/macaca-istanbul.svg
 [download-url]: https://npmjs.org/package/macaca-istanbul
 
 ---
