@@ -1,6 +1,6 @@
 {
   "name": "macaca-istanbul",
-  "version": "1.0.11",
+  "version": "1.0.19",
   "description": "Yet another JS code coverage tool that computes statement, line, function and branch coverage with module loader hooks to transparently add coverage when running tests. Supports all JS coverage use cases including unit tests, server side functional tests and browser tests. Built for scale",
   "keywords": [
     "coverage",
@@ -91,9 +91,8 @@
     "@graingert"
   ],
   "scripts": {
-    "pretest": "./download-escodegen-browser.sh",
     "test": "node test/run.js",
-    "posttest": "node ./lib/cli.js check-coverage --statements 95 --branches 80",
+    "posttest": "node ./lib/cli.js check-coverage --statements 50 --branches 50",
     "lint": "eslint . --fix"
   },
   "bin": {
@@ -101,7 +100,10 @@
   },
   "files": [
     "index.js",
-    "lib/**/*.js"
+    "lib/**/*.js",
+    "lib/**/*.css",
+    "lib/**/*.png",
+    "lib/**/*.handlebars"
   ],
   "repository": {
     "type": "git",

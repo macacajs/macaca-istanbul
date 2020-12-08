@@ -37,7 +37,7 @@ module.exports = {
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         numFiles = Object.keys(obj).length;
         collector.add(obj);
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(lcovFile));
         lines = fs.readFileSync(lcovFile, 'utf8').split(/\r?\n/);
         test.ok(lines.filter(function (line) { return line.indexOf('SF:') === 0; }).length, numFiles);
@@ -52,7 +52,7 @@ module.exports = {
             collector = new Collector();
 
         collector.add(JSON.parse(fs.readFileSync(file, 'utf8')));
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(lcovFile));
         fs.unlinkSync(lcovFile);
         test.done();

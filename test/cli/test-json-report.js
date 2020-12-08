@@ -35,7 +35,7 @@ module.exports = {
 
         obj = JSON.parse(fs.readFileSync(file, 'utf8'));
         collector.add(obj);
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(jsonFile));
         reportObj = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
         Object.keys(reportObj).forEach(function (k) {
@@ -51,7 +51,7 @@ module.exports = {
             collector = new Collector();
 
         collector.add(JSON.parse(fs.readFileSync(file, 'utf8')));
-        reporter.writeReport(collector, true);
+        reporter.writeReport(collector, { sync: true });
         test.ok(existsSync(jsonFile));
         fs.unlinkSync(jsonFile);
         test.done();
