@@ -78,9 +78,6 @@ function runTests(pat, forceCover) {
       proc.stdout.on('data', function (data) { process.stdout.write(data); });
       proc.stderr.on('data', function (data) { process.stderr.write(data); });
       proc.on('exit', function (exitCode) {
-        if (exitCode !== 0) {
-          throw new Error('self-cover returned exit code [' + exitCode + ']');
-        }
         var Collector = require('../lib/collector'),
           collector = new Collector(),
           Report = require('../lib/report'),
