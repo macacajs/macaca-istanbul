@@ -10,10 +10,10 @@
       .enable-incremental .disabled {
         opacity: 0.2;
       }
-      .enable-incremental .summary-line.origin{
+      .enable-incremental .summary-line.origin {
         display: none;
       }
-      .enable-origin .summary-line.incremental{
+      .enable-origin .summary-line.incremental {
         display: none;
       }
     </style>
@@ -35,7 +35,7 @@
     </h1>
     <div>
       <input id="incremental-btn" type="checkbox" />
-      <label for="incremental-btn">show incremental</label>
+      <label for="incremental-btn"></label>
     </div>
     <div class='clearfix origin'>
       {{#with metrics.lines}}
@@ -113,6 +113,11 @@
   <div class='status-line {{reportClass}}'></div>
   <script>
     function showIncremental() {
+      if (window.navigator.language.includes('en')) {
+        document.querySelector('[for="incremental-btn"]').innerText = 'show incremental';
+      } else {
+        document.querySelector('[for="incremental-btn"]').innerText = '查看增量覆盖率';
+      }
       document.querySelector('.incremental').style.display = 'block';
       document.querySelector('.origin').style.display = 'none';
       document.body.className = 'enable-incremental';
@@ -130,11 +135,11 @@
         localStorage && localStorage.setItem('enable-incremental', true);
       } else {
         showOrigin();
-        localStorage && localStorage.setItem('enable-incremental', '')
+        localStorage && localStorage.setItem('enable-incremental', '');
       }
     }, false);
 
-    if(localStorage && localStorage.getItem('enable-incremental')){
+    if (localStorage && localStorage.getItem('enable-incremental')) {
       showIncremental();
       document.querySelector('#incremental-btn').setAttribute('checked', 'checked');
     };
