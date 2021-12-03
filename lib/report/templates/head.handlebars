@@ -112,12 +112,15 @@
   </div>
   <div class='status-line {{reportClass}}'></div>
   <script>
-    function showIncremental() {
+    function showIncrementalText() {
       if (window.navigator.language.includes('en')) {
         document.querySelector('[for="incremental-btn"]').innerText = 'show incremental';
       } else {
         document.querySelector('[for="incremental-btn"]').innerText = '查看增量覆盖率';
       }
+    }
+
+    function showIncremental() {
       document.querySelector('.incremental').style.display = 'block';
       document.querySelector('.origin').style.display = 'none';
       document.body.className = 'enable-incremental';
@@ -143,4 +146,6 @@
       showIncremental();
       document.querySelector('#incremental-btn').setAttribute('checked', 'checked');
     };
+
+    showIncrementalText();
   </script>
