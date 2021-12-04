@@ -161,6 +161,9 @@
         background: #fff;
       `;
       document.body.appendChild(targetContainer);
+      if (targetContainer.clientHeight < document.documentElement.clientHeight * 2) {
+        return;
+      }
       window.html2canvas(targetContainer)
         .then(canvas => {
           canvas.addEventListener('click', (e) => {
