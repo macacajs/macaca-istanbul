@@ -179,7 +179,11 @@
           container.appendChild(canvas);
         });
     }
-    genScreenShot();
+    try {
+      genScreenShot();
+    } catch (e) {
+      console.log(e);
+    }
 
     document.querySelector('#incremental-btn').addEventListener('click', e => {
       if (e.target.checked) {
