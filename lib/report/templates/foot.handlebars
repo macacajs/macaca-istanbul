@@ -60,8 +60,10 @@ window.onload = function () {
     targetContainer.querySelectorAll('.disabled').forEach(el => {
       el.remove();
     });
-    targetContainer.querySelectorAll('*').forEach(el => {
-      el.style.background = 'red';
+    targetContainer.querySelectorAll('.cstat-no').forEach(el => {
+      if (el.innerText.trim()) {
+        el.style.background = 'red';
+      }
     });
     targetContainer.style.cssText = `
       position: absolute;
