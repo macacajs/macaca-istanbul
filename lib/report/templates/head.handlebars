@@ -18,6 +18,21 @@
       }
     </style>
     <script>
+      (function() {
+        const searchParams = new URLSearchParams(window.location.search);
+        const reliableHost = searchParams.get('reliableHost');
+        if (reliableHost) {
+          document.write(`
+            <style>
+              #back-to-reliable {
+                display: inline-block !important;
+              }
+            </style>
+          `);
+        }
+      })();
+    </script>
+    <script>
     !function(t,e,a,r,c){t.TracertCmdCache=t.TracertCmdCache||[],t[c]=window[c]||
       {_isInit:!0,call:function(){t.TracertCmdCache.push(arguments)},
       start:function(t){this.call('start',t)}},t[c].l=new Date;
@@ -31,6 +46,10 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
+      <span id="back-to-reliable" style="display: none;">
+        <a target="_blank" href="#">返回Reliable</a>
+        |
+      </span>
       {{{pathHtml}}}
     </h1>
     <div>

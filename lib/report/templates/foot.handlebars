@@ -107,11 +107,25 @@ window.onload = function () {
     }
   }, false);
 
+  function setBackToReliable() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const reliableHost = searchParams.get('reliableHost');
+    if (reliableHost) {
+      const jobName = searchParams.get('jobName');
+      if (jobName) {
+        document.querySelector('#back-to-reliable a').setAttribute('href', `${reliableHost}?jobName=${jobName}`);
+      } else {
+        document.querySelector('#back-to-reliable a').setAttribute('href', `${reliableHost}/insight`);
+      }
+    }
+  }
+
   window.addEventListener('load', () => {
     if (localStorage && localStorage.getItem('enable-incremental')) {
       showIncremental();
       document.querySelector('#incremental-btn').setAttribute('checked', 'checked');
     };
+    setBackToReliable();
   });
 </script>
 </body>
